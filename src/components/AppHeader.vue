@@ -1,6 +1,15 @@
 <script>
+import { useCartStore } from '@/stores/cart'
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+
+  computed: {
+    cartCount() {
+      const cart = useCartStore()
+      return cart.totalCount
+    }
+  }
+
 }
 </script>
 
@@ -12,7 +21,9 @@ export default {
       <nav class="menu">
         <router-link to="/">Home</router-link>
         <router-link to="/products">Products</router-link>
-        <router-link to="/cart">Cart</router-link>
+        <router-link to="/cart">Cart<span v-if="cartCount > 0" class="cart-badge">
+      {{ cartCount }}
+    </span></router-link>
       </nav>
     </div>
   </header>
@@ -25,7 +36,8 @@ header {
 
 .header-inner {
   max-width: 1200px;
-  padding: 1rem 2rem;
+  margin: 0 auto;
+  padding: 1rem clamp(1rem, 4vw, 2rem);
 
   display: flex;
   justify-content: space-between;
@@ -34,12 +46,20 @@ header {
 
 .logo {
   color: #c77dff;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  white-space: nowrap;
+}
+
+.menu {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2rem);
 }
 
 .menu a {
-  margin-left: 1.5rem;
   color: #b57cff;
   font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .menu a:hover {
