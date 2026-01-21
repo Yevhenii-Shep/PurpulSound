@@ -34,7 +34,6 @@ header {
 
 .logo {
   color: #c77dff;
-  margin-right: 280%;
 }
 
 .menu a {
