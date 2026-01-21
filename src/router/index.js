@@ -6,12 +6,32 @@ import CartView from '../views/CartView.vue'
 import ProductDetailView from '../views/ProductDetailView.vue'
 
 const routes = [
-    { path: '/', component: HomeView },
-    { path: '/products', component: ProductsView },
-    { path: '/products/:id', component: ProductDetailView, props: true },
-    { path: '/cart', component: CartView }
+    {
+        path: '/',
+        name: 'home',
+        component: HomeView
+    },
+    {
+        path: '/products',
+        name: 'products',
+        component: ProductsView
+    },
+    {
+        path: '/products/:id',
+        name: 'product-detail',
+        component: ProductDetailView,
+        props: true
+    },
+    {
+        path: '/cart',
+        name: 'cart',
+        component: CartView
+    }
 ]
 
-export default createRouter({
+const router = createRouter({
     history: createWebHashHistory(),
+    routes: routes
 })
+
+export default router
