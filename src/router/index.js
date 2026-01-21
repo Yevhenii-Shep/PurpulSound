@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 import HomeView from '../views/HomeView.vue'
 import ProductsView from '../views/ProductsView.vue'
@@ -9,10 +9,9 @@ const routes = [
     { path: '/', component: HomeView },
     { path: '/products', component: ProductsView },
     { path: '/products/:id', component: ProductDetailView, props: true },
-    { path: '/cart', component: CartView },
+    { path: '/cart', component: CartView }
 ]
 
 export default createRouter({
-    history: createWebHistory(),
-    routes
+    history: createWebHashHistory(),
 })
